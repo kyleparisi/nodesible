@@ -1,0 +1,24 @@
+---
+
+- apt_repository:
+    repo: deb http://nginx.org/packages/ubuntu/ xenial nginx
+
+- apt_repository:
+    repo: deb-src http://nginx.org/packages/ubuntu/ xenial nginx
+
+- name: apt install nginx -y
+  apt:
+    name: nginx
+    allow_unauthenticated: yes
+
+- name: Sync nginx.conf file
+  copy: src=nginx.conf dest=/etc/nginx
+
+- name: Sync virtual host files
+  synchronize: src=conf.d dest=/etc/nginx/conf.d
+
+- name: Make default folder
+  file: path=/var/www/default state=directory
+
+- name: test nginx
+  shell: nginx -t
