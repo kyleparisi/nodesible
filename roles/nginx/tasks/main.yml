@@ -15,7 +15,7 @@
   copy: src=nginx.conf dest=/etc/nginx
 
 - name: Sync virtual host files
-  synchronize: src=conf.d dest=/etc/nginx/conf.d
+  synchronize: src=conf.d dest=/etc/nginx
 
 - name: Make default folder
   file: path=/var/www/default state=directory
