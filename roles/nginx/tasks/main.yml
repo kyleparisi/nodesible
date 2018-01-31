@@ -1,5 +1,9 @@
 ---
 
+- name: add apt-key
+  apt_key:
+    url: http://nginx.org/keys/nginx_signing.key
+
 - apt_repository:
     repo: deb http://nginx.org/packages/ubuntu/ xenial nginx
 
@@ -9,7 +13,6 @@
 - name: apt install nginx -y
   apt:
     name: nginx
-    allow_unauthenticated: yes
 
 - name: Sync nginx.conf file
   copy: src=nginx.conf dest=/etc/nginx
