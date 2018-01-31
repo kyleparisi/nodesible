@@ -13,12 +13,18 @@
 - name: apt install nginx -y
   apt:
     name: nginx
+  notify:
+    - nginx restart
 
 - name: Sync nginx.conf file
   copy: src=nginx.conf dest=/etc/nginx
+  notify:
+    - nginx reload
 
 - name: Sync virtual host files
   synchronize: src=conf.d dest=/etc/nginx
+  notify:
+    - nginx reload
 
 - name: Make default folder
   file: path=/var/www/default state=directory
