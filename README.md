@@ -9,6 +9,8 @@ Note: Not intending to be all inclusive.  This is however intending to be basic,
 Clone this repo to the server that needs provisioning.  
 
 ```bash
+./provision.sh
+# or
 apt install python ansible -y
 ansible-playbook playbook.yml
 ```
